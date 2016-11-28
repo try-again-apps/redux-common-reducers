@@ -1,0 +1,35 @@
+{
+  "name": "redux-common-reducers",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "scripts": {
+    "build:commonjs": "babel src --out-dir lib",
+    "build": "cross-env NODE_ENV=production webpack --mode=build",
+    "dev": "webpack --progress --colors --watch --mode=dev",
+    "test": "jest",
+    "cover": "jest --coverage"
+  },
+  "repository": "https://github.com/try-again-apps/redux-common-reducers.git",
+  "author": "Try Again Apps <try.again.apps@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.2",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^17.0.2",
+    "babel-loader": "^6.2.8",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "coveralls": "^2.11.15",
+    "cross-env": "^3.1.3",
+    "eslint": "^3.10.2",
+    "eslint-loader": "^1.6.1",
+    "jest": "^17.0.3",
+    "webpack": "^1.13.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.2"
+  }
+}

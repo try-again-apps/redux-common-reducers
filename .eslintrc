@@ -1,0 +1,38 @@
+{
+  "ecmaFeatures": {
+    "globalReturn": true,
+    "jsx": true,
+    "modules": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "globals": {
+    "document": false,
+    "escape": false,
+    "navigator": false,
+    "unescape": false,
+    "window": false,
+    "describe": true,
+    "before": true,
+    "it": true,
+    "expect": true,
+    "sinon": true
+  },
+  "parser": "babel-eslint",
+  "extends": ["eslint:recommended"],
+  "rules": {
+    "semi": 1,
+    "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
+    "no-console": [2, { allow: ["info", "log", "warn", "table", "error"] }],
+    "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
+    "keyword-spacing": [2, {"before": true, "after": true}],
+    "eqeqeq": [2, "smart"],
+    "no-var": 2,
+    "no-unused-vars": [1, {"vars": "local", "args": "none"}],
+    "quote-props": [1, "consistent-as-needed"],
+    "space-infix-ops": 2
+  }
+}
