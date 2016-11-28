@@ -26,7 +26,7 @@
   "rules": {
     "semi": 1,
     "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
-    "no-console": [2, { allow: ["info", "log", "warn", "table", "error"] }],
+    "no-console": [2, { "allow": ["info"] }],
     "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
     "keyword-spacing": [2, {"before": true, "after": true}],
     "eqeqeq": [2, "smart"],
