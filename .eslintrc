@@ -1,25 +1,20 @@
 {
   "ecmaFeatures": {
     "globalReturn": true,
-    "jsx": true,
     "modules": true
   },
   "env": {
     "browser": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "globals": {
     "document": false,
     "escape": false,
     "navigator": false,
     "unescape": false,
-    "window": false,
-    "describe": true,
-    "before": true,
-    "it": true,
-    "expect": true,
-    "sinon": true
+    "window": false
   },
   "parser": "babel-eslint",
   "extends": ["eslint:recommended"],

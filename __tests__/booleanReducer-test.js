@@ -4,24 +4,27 @@ import { booleanReducer } from '../src';
 const trueActions = ['TRUE_ACTION1', 'TRUE_ACTION2', 'TRUE_ACTION3'];
 const falseActions = ['FALSE_ACTION1', 'FALSE_ACTION2'];
 const unknownAction = 'UNKNOWN_ACTION';
-const initialState = false;
+const currentState = false;
 
 describe("booleanReducer", () => {
-  describe("initialState, unknown action", () => {
-    it("returns false if not set", () => {
+  describe("no initial state, unknown action", () => {
+    it("returns current state if initial not set", () => {
       const reducer = booleanReducer(trueActions, falseActions);
       const action = { type: unknownAction };
-      expect(reducer(initialState, action)).toBe(false);
+      expect(reducer(currentState, action)).toBe(currentState);
     });
+  });
+
+  describe("initial state set, unknown action", () => {
     it("returns 'true' if set to 'true'", () => {
       const reducer = booleanReducer(trueActions, falseActions, true);
       const action = { type: unknownAction };
-      expect(reducer(initialState, action)).toBe(true);
+      expect(reducer(currentState, action)).toBe(true);
     });
     it("returns 'false' if set to 'false'", () => {
       const reducer = booleanReducer(trueActions, falseActions, false);
       const action = { type: unknownAction };
-      expect(reducer(initialState, action)).toBe(false);
+      expect(reducer(currentState, action)).toBe(false);
     });
   });
 
@@ -29,12 +32,12 @@ describe("booleanReducer", () => {
     it("returns 'false' for 'false' action; initialState set to 'false'", () => {
       const reducer = booleanReducer(trueActions, falseActions, false);
       const action = { type: _sample(falseActions) };
-      expect(reducer(initialState, action)).toBe(false);
+      expect(reducer(currentState, action)).toBe(false);
     });
     it("returns 'false' for 'false' action; initialState set to 'true'", () => {
       const reducer = booleanReducer(trueActions, falseActions, true);
       const action = { type: _sample(falseActions) };
-      expect(reducer(initialState, action)).toBe(false);
+      expect(reducer(currentState, action)).toBe(false);
     });
   });
 
@@ -42,12 +45,12 @@ describe("booleanReducer", () => {
     it("returns 'true' for 'true' action; initialState set to 'false'", () => {
       const reducer = booleanReducer(trueActions, falseActions, false);
       const action = { type: _sample(trueActions) };
-      expect(reducer(initialState, action)).toBe(true);
+      expect(reducer(currentState, action)).toBe(true);
     });
     it("returns 'true' for 'true' action; initialState set to 'true'", () => {
       const reducer = booleanReducer(trueActions, falseActions, true);
       const action = { type: _sample(trueActions) };
-      expect(reducer(initialState, action)).toBe(true);
+      expect(reducer(currentState, action)).toBe(true);
     });
   });
 
@@ -55,11 +58,11 @@ describe("booleanReducer", () => {
     const reducer = booleanReducer(trueActions, falseActions, false);
     it("return 'true' for current reducer state", () => {
       const action = { type: _sample(trueActions) };
-      expect(reducer(initialState, action)).toBe(true);
+      expect(reducer(currentState, action)).toBe(true);
     });
     it("return 'false' for current reducer state", () => {
       const action = { type: _sample(falseActions) };
-      expect(reducer(initialState, action)).toBe(false);
+      expect(reducer(currentState, action)).toBe(false);
     });
   });
 });
