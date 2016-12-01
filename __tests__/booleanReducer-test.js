@@ -1,4 +1,4 @@
-import _sample from 'lodash/sample';
+import _sample from 'lodash.sample';
 import { booleanReducer } from '../src';
 
 const trueActions = ['TRUE_ACTION1', 'TRUE_ACTION2', 'TRUE_ACTION3'];

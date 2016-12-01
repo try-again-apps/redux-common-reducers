@@ -1,4 +1,4 @@
-import _get from 'lodash/get';
+import _get from 'lodash.get';
 
 export default function stringReducer(changeActions, resetActions, path, initialState) {
   return (state, action) => {
