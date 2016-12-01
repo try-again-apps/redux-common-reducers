@@ -1,7 +1,11 @@
 export default function booleanReducer(trueActions, falseActions, initialState) {
-  return function(state, action) {
+  return (state, action) => {
     if (initialState !== undefined) {
       state = initialState;
+    }
+
+    if (state === undefined) {
+      state = false;
     }
 
     if (~trueActions.indexOf(action.type)) {

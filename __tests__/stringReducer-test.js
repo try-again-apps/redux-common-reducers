@@ -7,6 +7,14 @@ const unknownAction = 'UNKNOWN_ACTION';
 const currentState = 'reduce me!';
 
 describe("stringReducer", () => {
+  describe("reducer init", () => {
+    it("returns default value on init", () => {
+      const reducer = stringReducer(changeActions, resetActions, ['path']);
+      const action = { type: "@@INIT" };
+      expect(reducer(undefined, action)).toBe('');
+    });  
+  });
+
   describe("no initial state, unknown action", () => {
     it("returns current state if initial not set", () => {
       const reducer = stringReducer(changeActions, resetActions, ['path']);

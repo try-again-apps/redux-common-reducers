@@ -7,7 +7,16 @@
     "build": "cross-env NODE_ENV=production webpack --mode=build",
     "dev": "webpack --progress --colors --watch --mode=dev",
     "test": "jest",
-    "cover": "jest --coverage"
+    "test:watch": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "bail": "true",
+    "verbose": "true",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ]
   },
   "repository": "https://github.com/try-again-apps/redux-common-reducers.git",
   "author": "Try Again Apps <try.again.apps@gmail.com>",
@@ -27,9 +36,10 @@
     "eslint": "^3.10.2",
     "eslint-loader": "^1.6.1",
     "jest": "^17.0.3",
+    "lodash.sample": "^4.2.1",
     "webpack": "^1.13.3"
   },
   "dependencies": {
-    "lodash": "^4.17.2"
+    "lodash.get": "^4.4.2"
   }
 }

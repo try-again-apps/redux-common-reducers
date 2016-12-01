@@ -6,6 +6,10 @@ export default function stringReducer(changeActions, resetActions, path, initial
       state = initialState;
     }
 
+    if (state === undefined) {
+      state = '';
+    }
+
     if (~changeActions.indexOf(action.type)) {
       return _get(action.payload, path);
     }

@@ -7,6 +7,20 @@ const unknownAction = 'UNKNOWN_ACTION';
 const currentState = false;
 
 describe("booleanReducer", () => {
+  describe("reducer init", () => {
+    it("returns default value on init", () => {
+      const reducer = booleanReducer(trueActions, falseActions);
+      const action = { type: "@@INIT" };
+      expect(reducer(undefined, action)).toBe(false);
+    });
+
+    it("returns default value on init, initial set to true", () => {
+      const reducer = booleanReducer(trueActions, falseActions, true);
+      const action = { type: "@@INIT" };
+      expect(reducer(undefined, action)).toBe(true);
+    });
+  });
+
   describe("no initial state, unknown action", () => {
     it("returns current state if initial not set", () => {
       const reducer = booleanReducer(trueActions, falseActions);
