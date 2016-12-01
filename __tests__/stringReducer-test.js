@@ -1,4 +1,4 @@
-import _sample from 'lodash/sample';
+import _sample from 'lodash.sample';
 import { stringReducer } from '../src';
 
 const changeActions = ['CHANGE_ACTION1', 'CHANGE_ACTION2', 'CHANGE_ACTION3'];
@@ -12,7 +12,7 @@ describe("stringReducer", () => {
       const reducer = stringReducer(changeActions, resetActions, ['path']);
       const action = { type: "@@INIT" };
       expect(reducer(undefined, action)).toBe('');
-    });  
+    });
   });
 
   describe("no initial state, unknown action", () => {
