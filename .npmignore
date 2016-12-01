@@ -1,0 +1,11 @@
+src
+__tests__
+node_modules
+webpack.config.js
+.travis.yml
+coverage
+.babelrc
+.gitignore
+.eslintrc
+.npmignore
+.git
