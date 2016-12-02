@@ -1,17 +1,18 @@
 import _get from 'lodash.get';
+import _has from 'lodash.has';
 
-export default function stringReducer(changeActions, resetActions, path, initialState) {
-  return (state, action) => {
-    if (initialState !== undefined) {
-      state = initialState;
-    }
+export default function stringReducer(changeActions, resetActions, path, initialValue = '') {
+  if (typeof(initialValue) !== 'string') {
+    throw new TypeError('Initial state needs to be string');
+  }
 
-    if (state === undefined) {
-      state = '';
-    }
-
+  return (state = initialValue, action) => {
     if (~changeActions.indexOf(action.type)) {
-      return _get(action.payload, path);
+      if (!_has(action, path)) {
+        throw new Error(`Path "${path.join('.')}" not found in action!`);
+      }
+
+      return _get(action, path);
     }
 
     if (~resetActions.indexOf(action.type)) {

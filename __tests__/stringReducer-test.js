@@ -4,56 +4,68 @@ import { stringReducer } from '../src';
 const changeActions = ['CHANGE_ACTION1', 'CHANGE_ACTION2', 'CHANGE_ACTION3'];
 const resetActions = ['RESET_ACTION1', 'RESET_ACTION2'];
 const unknownAction = 'UNKNOWN_ACTION';
-const currentState = 'reduce me!';
 
-describe("stringReducer", () => {
-  describe("reducer init", () => {
-    it("returns default value on init", () => {
-      const reducer = stringReducer(changeActions, resetActions, ['path']);
-      const action = { type: "@@INIT" };
-      expect(reducer(undefined, action)).toBe('');
+describe('stringReducer', () => {
+  describe('should return the initial value', () => {
+    it('initial value default (empty string)', () => {
+      const reducer = stringReducer(changeActions, resetActions);
+      expect(reducer(undefined, {})).toBe('');
+    });
+    it('initial value set to "reduce me!"', () => {
+      const reducer = stringReducer(changeActions, resetActions, [], 'reduce me!');
+      expect(reducer(undefined, {})).toBe('reduce me!');
     });
   });
 
-  describe("no initial state, unknown action", () => {
-    it("returns current state if initial not set", () => {
-      const reducer = stringReducer(changeActions, resetActions, ['path']);
-      const action = { type: unknownAction, payload: { path: 'reduced by me!' } };
-      expect(reducer(currentState, action)).toBe(currentState);
+  describe('should return initial state on unknown action', () => {
+    it('initial state default (empty string)', () => {
+      const reducer = stringReducer(changeActions, resetActions);
+      expect(reducer('', { type: unknownAction })).toBe('');
+    });
+    it('initial state set to "reduce me!"', () => {
+      const reducer = stringReducer(changeActions, resetActions);
+      expect(reducer('reduce me!', { type: unknownAction })).toBe('reduce me!');
     });
   });
 
-  describe("initial state set, unknown action", () => {
-    it("returns initial state when set", () => {
-      const reducer = stringReducer(changeActions, resetActions, ['path'], 'initialize me!');
-      const action = { type: unknownAction, payload: { path: 'reduced by me!' } };
-      expect(reducer(currentState, action)).toBe('initialize me!');
+  describe('should change state on handled action', () => {
+    it('change state with change action', () => {
+      const reducer = stringReducer(changeActions, resetActions, ['payload']);
+      expect(reducer('reduce me!', { type: _sample(changeActions), payload: 'new value' })).toBe('new value');
+    });
+    it('throw error on change action if path is incorrect', () => {
+      try {
+        const reducer = stringReducer(changeActions, resetActions, ['incorrect', 'path']);
+        expect(reducer('reduce me!', { type: _sample(changeActions), payload: 'new value' })).toBe('reduce me!');
+      }
+      catch (error) {
+        expect(error).toBeInstanceOf(Error);
+      }
+    });
+    it('reset state with reset action', () => {
+      const reducer = stringReducer(changeActions, resetActions);
+      expect(reducer('reduce me!', { type: _sample(resetActions) })).toBe('');
     });
   });
 
-  describe("change actions", () => {
-    it("returns value from action, initial state not set", () => {
-      const reducer = stringReducer(changeActions, resetActions, ['path']);
-      const action = { type: _sample(changeActions), payload: { path: 'reduced by me!' } };
-      expect(reducer(currentState, action)).toBe('reduced by me!');
+  describe('should throw on incorrect type of initial value', () => {
+    it('initial value set to Number', () => {
+      try {
+        const reducer = stringReducer(changeActions, resetActions, ['path'], 42);
+        expect(reducer(undefined, {})).toBe('');
+      }
+      catch (error) {
+        expect(error).toBeInstanceOf(TypeError);
+      }
     });
-    it("returns value from action, initial state set", () => {
-      const reducer = stringReducer(changeActions, resetActions, ['path'], 'initialize me!');
-      const action = { type: _sample(changeActions), payload: { path: 'reduced by me!' } };
-      expect(reducer(currentState, action)).toBe('reduced by me!');
-    });
-  });
-
-  describe("reset actions", () => {
-    it("returns '' value, initial state not set, payload ignored", () => {
-      const reducer = stringReducer(changeActions, resetActions, ['path']);
-      const action = { type: _sample(resetActions), payload: { path: 'reduced by me!' } };
-      expect(reducer(currentState, action)).toBe('');
-    });
-    it("returns value from action, initial state set, payload ignored", () => {
-      const reducer = stringReducer(changeActions, resetActions, ['path'], 'initialize me!');
-      const action = { type: _sample(resetActions), payload: { path: 'reduced by me!' } };
-      expect(reducer(currentState, action)).toBe('');
+    it('initial value set to Boolean', () => {
+      try {
+        const reducer = stringReducer(changeActions, resetActions, ['path'], true);
+        expect(reducer(undefined, {})).toBe('');
+      }
+      catch (error) {
+        expect(error).toBeInstanceOf(TypeError);
+      }
     });
   });
 });
