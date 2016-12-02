@@ -4,79 +4,70 @@ import { booleanReducer } from '../src';
 const trueActions = ['TRUE_ACTION1', 'TRUE_ACTION2', 'TRUE_ACTION3'];
 const falseActions = ['FALSE_ACTION1', 'FALSE_ACTION2'];
 const unknownAction = 'UNKNOWN_ACTION';
-const currentState = false;
 
-describe("booleanReducer", () => {
-  describe("reducer init", () => {
-    it("returns default value on init", () => {
+describe('booleanReducer', () => {
+  describe('should return the initial state', () => {
+    it('initial state default (false)', () => {
       const reducer = booleanReducer(trueActions, falseActions);
-      const action = { type: "@@INIT" };
-      expect(reducer(undefined, action)).toBe(false);
+      expect(reducer(undefined, {})).toBe(false);
     });
-
-    it("returns default value on init, initial set to true", () => {
+    it('initial state set to true', () => {
       const reducer = booleanReducer(trueActions, falseActions, true);
-      const action = { type: "@@INIT" };
-      expect(reducer(undefined, action)).toBe(true);
+      expect(reducer(undefined, {})).toBe(true);
     });
   });
 
-  describe("no initial state, unknown action", () => {
-    it("returns current state if initial not set", () => {
+  describe('should return initial state on unknown action', () => {
+    it('initial state default (false)', () => {
       const reducer = booleanReducer(trueActions, falseActions);
-      const action = { type: unknownAction };
-      expect(reducer(currentState, action)).toBe(currentState);
+      expect(reducer(false, { type: unknownAction })).toBe(false);
     });
-  });
-
-  describe("initial state set, unknown action", () => {
-    it("returns 'true' if set to 'true'", () => {
+    it('initial state set to true', () => {
       const reducer = booleanReducer(trueActions, falseActions, true);
-      const action = { type: unknownAction };
-      expect(reducer(currentState, action)).toBe(true);
-    });
-    it("returns 'false' if set to 'false'", () => {
-      const reducer = booleanReducer(trueActions, falseActions, false);
-      const action = { type: unknownAction };
-      expect(reducer(currentState, action)).toBe(false);
+      expect(reducer(false, { type: unknownAction })).toBe(false);
     });
   });
 
-  describe("'false' actions", () => {
-    it("returns 'false' for 'false' action; initialState set to 'false'", () => {
-      const reducer = booleanReducer(trueActions, falseActions, false);
-      const action = { type: _sample(falseActions) };
-      expect(reducer(currentState, action)).toBe(false);
+  describe('should return false on false action', () => {
+    it('current state set to false', () => {
+      const reducer = booleanReducer(trueActions, falseActions);
+      expect(reducer(false, { type: _sample(falseActions) })).toBe(false);
     });
-    it("returns 'false' for 'false' action; initialState set to 'true'", () => {
-      const reducer = booleanReducer(trueActions, falseActions, true);
-      const action = { type: _sample(falseActions) };
-      expect(reducer(currentState, action)).toBe(false);
+    it('current state set to true', () => {
+      const reducer = booleanReducer(trueActions, falseActions);
+      expect(reducer(true, { type: _sample(falseActions) })).toBe(false);
     });
   });
 
-  describe("'true' actions", () => {
-    it("returns 'true' for 'true' action; initialState set to 'false'", () => {
-      const reducer = booleanReducer(trueActions, falseActions, false);
-      const action = { type: _sample(trueActions) };
-      expect(reducer(currentState, action)).toBe(true);
+  describe('should return true on true action', () => {
+    it('current state set to false', () => {
+      const reducer = booleanReducer(trueActions, falseActions);
+      expect(reducer(false, { type: _sample(trueActions) })).toBe(true);
     });
-    it("returns 'true' for 'true' action; initialState set to 'true'", () => {
-      const reducer = booleanReducer(trueActions, falseActions, true);
-      const action = { type: _sample(trueActions) };
-      expect(reducer(currentState, action)).toBe(true);
+    it('current state set to true', () => {
+      const reducer = booleanReducer(trueActions, falseActions);
+      expect(reducer(true, { type: _sample(trueActions) })).toBe(true);
     });
   });
 
-  describe("'false' => 'true' => 'false'", () => {
-    const reducer = booleanReducer(trueActions, falseActions, false);
-    it("return 'true' for current reducer state", () => {
-      const action = { type: _sample(trueActions) };
-      expect(reducer(currentState, action)).toBe(true);
+  describe('should throw on incorrect type of initial state', () => {
+    it('initial state set to Number', () => {
+      try {
+        const reducer = booleanReducer(trueActions, falseActions, 42);
+        expect(reducer(undefined, {})).toBe(false);
+      }
+      catch (error) {
+        expect(error).toBeInstanceOf(TypeError);
+      }
     });
-    it("return 'false' for current reducer state", () => {
-      const action = { type: _sample(falseActions) };
-      expect(reducer(currentState, action)).toBe(false);
+    it('initial state set to String', () => {
+      try {
+        const reducer = booleanReducer(trueActions, falseActions, '42');
+        expect(reducer(undefined, {})).toBe(false);
+      }
+      catch (error) {
+        expect(error).toBeInstanceOf(TypeError);
+      }
     });
   });
 });
