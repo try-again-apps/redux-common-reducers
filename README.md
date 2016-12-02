@@ -9,7 +9,13 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/try-again-apps/redux-common-reducers/ec3bcec2480c321eb508263b7ee48adacb5e17fb/badge.svg)](https://snyk.io/test/github/try-again-apps/redux-common-reducers/ec3bcec2480c321eb508263b7ee48adacb5e17fb)
 
 ## Installation
-
+```js
+npm install -S redux-common-reducers
+```
+or
+```js
+yarn add redux-common-reducers
+```
 ## Usage
 
 ### `booleanReducer(trueActions, falseActions, [initialValue = false])`
@@ -69,7 +75,7 @@ const myView = combineReducers({
     'path.to.somewhere')
 })
 ```
-The `stringReducer` will look for value in `action.path`.
+The `stringReducer` will look for value in `action.path.to.somewhere`.
 This is action that will trigger change of `name` to `new value`:
 ```js
 { type: 'CAHNGE_ACTION1', path: { to: { somewhere: 'new value' } } }
