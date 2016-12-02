@@ -1,9 +1,9 @@
-export default function booleanReducer(trueActions, falseActions, initialState = false) {
-  if (typeof(initialState) !== 'boolean') {
+export default function booleanReducer(trueActions, falseActions, initialValue = false) {
+  if (typeof(initialValue) !== 'boolean') {
     throw new TypeError('Initial state needs to be boolean');
   }
 
-  return (state = initialState, action) => {
+  return (state = initialValue, action) => {
     if (~trueActions.indexOf(action.type)) {
       return true;
     }

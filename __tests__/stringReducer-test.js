@@ -29,9 +29,13 @@ describe('stringReducer', () => {
   });
 
   describe('should change state on handled action', () => {
-    it('change state with change action', () => {
-      const reducer = stringReducer(changeActions, resetActions, ['payload']);
-      expect(reducer('reduce me!', { type: _sample(changeActions), payload: 'new value' })).toBe('new value');
+    it('change state with change action, path to value as array', () => {
+      const reducer = stringReducer(changeActions, resetActions, ['payload', 'value']);
+      expect(reducer('reduce me!', { type: _sample(changeActions), payload: { value: 'new value' } })).toBe('new value');
+    });
+    it('change state with change action, path to value as string', () => {
+      const reducer = stringReducer(changeActions, resetActions, 'payload.value');
+      expect(reducer('reduce me!', { type: _sample(changeActions), payload: { value : 'new value' } })).toBe('new value');
     });
     it('throw error on change action if path is incorrect', () => {
       try {
