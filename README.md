@@ -1,12 +1,12 @@
 # redux-common-reducers :hatching_chick:
 
+[![npm package](https://img.shields.io/npm/v/redux-common-reducers.svg)](https://www.npmjs.com/package/redux-common-reducers)
 [![Build Status](https://travis-ci.org/try-again-apps/redux-common-reducers.svg?branch=master)](https://travis-ci.org/try-again-apps/redux-common-reducers)
 [![Coverage Status](https://coveralls.io/repos/github/try-again-apps/redux-common-reducers/badge.svg?branch=master)](https://coveralls.io/github/try-again-apps/redux-common-reducers?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/try-again-apps/redux-common-reducers/ec3bcec2480c321eb508263b7ee48adacb5e17fb/badge.svg)](https://snyk.io/test/github/try-again-apps/redux-common-reducers/ec3bcec2480c321eb508263b7ee48adacb5e17fb)
 
 [![dependencies Status](https://david-dm.org/try-again-apps/redux-common-reducers/status.svg)](https://david-dm.org/try-again-apps/redux-common-reducers)
 [![devDependencies Status](https://david-dm.org/try-again-apps/redux-common-reducers/dev-status.svg)](https://david-dm.org/try-again-apps/redux-common-reducers?type=dev)
-
-[![Known Vulnerabilities](https://snyk.io/test/github/try-again-apps/redux-common-reducers/ec3bcec2480c321eb508263b7ee48adacb5e17fb/badge.svg)](https://snyk.io/test/github/try-again-apps/redux-common-reducers/ec3bcec2480c321eb508263b7ee48adacb5e17fb)
 
 ## Installation
 ```js

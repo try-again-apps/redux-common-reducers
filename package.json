@@ -1,6 +1,7 @@
 {
   "name": "redux-common-reducers",
-  "version": "0.1.0",
+  "description": "Common reducers for Redux",
+  "version": "0.1.1",
   "main": "lib/index.js",
   "scripts": {
     "build:commonjs": "babel src --out-dir lib",
@@ -18,6 +19,12 @@
       "src/**/*.{js,jsx}"
     ]
   },
+  "keywords": [
+    "redux",
+    "common",
+    "reducer",
+    "reducers"
+  ],
   "repository": "https://github.com/try-again-apps/redux-common-reducers.git",
   "author": "Try Again Apps <try.again.apps@gmail.com>",
   "license": "MIT",
