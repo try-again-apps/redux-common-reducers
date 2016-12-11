@@ -56,8 +56,43 @@ const myView = combineReducers({
   isDoingSth
 })
 ```
+### `numberReducer(changeActions, pathToValue, [initialValue = 0])`
+**Arguments**
+* `changeActions (Array)` - The actions' names which changes value of state.
+* `pathToValue (Array|string)` - The path of the property to get. Lodash `get` is used under the hood so same rules apply as there. Check [`lodash.get`](https://lodash.com/docs/4.17.2#get) docs. :eyes:
+* `[initialValue=0] (number)` - The initial value of state.
 
-### `stringReducer(changeActions, resetActions, pathToValue, initialValue = '')`
+**Example**
+```js
+import { numberReducer } from 'redux-common-reducers';
+
+const stats = combineReducers({
+  errorCount: numberReducer(
+    ['CHANGE_ACTION1', 'CHANGE_ACTION2'],
+    'path.to.somewhere'
+    42)
+})
+```
+
+is same as:
+
+```js
+const errorCount = (state = 42, action) => {
+  switch (action.type) {
+    case 'CHANGE_ACTION1':
+    case 'CHANGE_ACTION2':
+      return action.path.to.somewhere;
+    default:
+      return state;
+  }
+}
+
+const stats = combineReducers({
+  errorCount
+})
+```
+
+### `stringReducer(changeActions, resetActions, pathToValue, [initialValue = ''])`
 **Arguments**
 * `changeActions (Array)` - The actions' names which changes value of state.
 * `resetActions (Array)` - The actions' names which resets value to default value (empty string).
