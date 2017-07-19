@@ -5,7 +5,6 @@ const production = process.env.NODE_ENV === 'production';
 const libraryName = 'redux-common-reducers';
 
 const plugins = [
-  new webpack.optimize.OccurenceOrderPlugin(),
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   })
@@ -35,14 +34,15 @@ module.exports = {
     umdNamedDefine: true
   },
   module: {
-    loaders: [
+    rules: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.js$/, loader: 'eslint-loader', exclude: /node_modules/ }
     ]
   },
   resolve: {
-    root: path.resolve('./src'),
-    extensions: ['', '.js']
+    modules: [
+      "node_modules"
+    ]
   },
   plugins
 };

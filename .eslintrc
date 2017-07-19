@@ -1,7 +1,11 @@
 {
-  "ecmaFeatures": {
-    "globalReturn": true,
-    "modules": true
+  "root": true,
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "globalReturn": true,
+      "modules": true
+    }
   },
   "env": {
     "browser": true,
@@ -16,7 +20,6 @@
     "unescape": false,
     "window": false
   },
-  "parser": "babel-eslint",
   "extends": ["eslint:recommended"],
   "rules": {
     "semi": 1,

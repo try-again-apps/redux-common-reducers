@@ -1,5 +1,5 @@
-import _get from 'lodash.get';
-import _has from 'lodash.has';
+import _get from 'lodash/get';
+import _has from 'lodash/has';
 
 export default function stringReducer(changeActions, resetActions, path, initialValue = '') {
   if (typeof(initialValue) !== 'string') {

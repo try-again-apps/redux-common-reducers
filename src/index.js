@@ -1,9 +1,3 @@
-import booleanReducer from './booleanReducer';
-import numberReducer from './numberReducer';
-import stringReducer from './stringReducer';
-
-export {
-  booleanReducer,
-  numberReducer,
-  stringReducer
-};
+export booleanReducer from './booleanReducer';
+export numberReducer from './numberReducer';
+export stringReducer from './stringReducer';
