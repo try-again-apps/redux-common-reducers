@@ -13,8 +13,8 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "bail": "true",
-    "verbose": "true",
+    "bail": true,
+    "verbose": true,
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"
     ]
