@@ -95,7 +95,7 @@ const stats = combineReducers({
 ### `stringReducer(changeActions, resetActions, pathToValue, [initialValue = ''])`
 **Arguments**
 * `changeActions (Array)` - The actions' names which changes value of state.
-* `resetActions (Array)` - The actions' names which resets value to default value (empty string).
+* `resetActions (Array)` - The actions' names which resets value to default value (`initialValue`).
 * `pathToValue (Array|string)` - The path of the property to get. Lodash `get` is used under the hood so same rules apply as there. Check [`lodash.get`](https://lodash.com/docs/4.17.2#get) docs. :eyes:
 * `[initialValue=''] (string)` - The initial value of state.
 

@@ -50,6 +50,10 @@ describe('stringReducer', () => {
       const reducer = stringReducer(changeActions, resetActions);
       expect(reducer('reduce me!', { type: _sample(resetActions) })).toBe('');
     });
+    it('reset state with reset action - initial value is returned', () => {
+      const reducer = stringReducer(changeActions, resetActions, 'payload.value', 'initial value');
+      expect(reducer('reduce me!', { type: _sample(resetActions) })).toBe('initial value');
+    });
   });
 
   describe('should throw on incorrect type of initial value', () => {

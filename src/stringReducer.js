@@ -16,7 +16,7 @@ export default function stringReducer(changeActions, resetActions, path, initial
     }
 
     if (~resetActions.indexOf(action.type)) {
-      return '';
+      return initialValue;
     }
 
     return state;
