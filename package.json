@@ -4,6 +4,7 @@
   "version": "0.2.1",
   "main": "lib/index.js",
   "scripts": {
+    "precommit": "lint-staged",
     "build:commonjs": "babel src --out-dir lib",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack --progress --colors --watch",
@@ -15,16 +16,9 @@
     "testEnvironment": "node",
     "bail": true,
     "verbose": true,
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ]
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"]
   },
-  "keywords": [
-    "redux",
-    "common",
-    "reducer",
-    "reducers"
-  ],
+  "keywords": ["redux", "common", "reducer", "reducers"],
   "repository": "https://github.com/try-again-apps/redux-common-reducers.git",
   "author": "Try Again Apps <try.again.apps@gmail.com>",
   "license": "MIT",
@@ -43,11 +37,20 @@
     "cross-env": "^5.0.1",
     "eslint": "^4.2.0",
     "eslint-loader": "^1.9.0",
+    "husky": "^0.14.3",
     "jest": "^20.0.4",
+    "lint-staged": "^7.0.0",
     "lodash.sample": "^4.2.1",
+    "prettier": "^1.11.1",
     "webpack": "^3.3.0"
   },
   "dependencies": {
     "lodash": "^4.17.4"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.js`": ["prettier --write", "git add"]
   }
 }
