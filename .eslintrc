@@ -1,4 +1,5 @@
 {
+  "extends": ["eslint:recommended", "eslint-config-prettier"],
   "root": true,
   "parser": "babel-eslint",
   "parserOptions": {
@@ -20,17 +21,11 @@
     "unescape": false,
     "window": false
   },
-  "extends": ["eslint:recommended"],
   "rules": {
-    "semi": 1,
-    "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
     "no-console": [2, { "allow": ["info"] }],
-    "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
-    "keyword-spacing": [2, {"before": true, "after": true}],
     "eqeqeq": [2, "smart"],
     "no-var": 2,
-    "no-unused-vars": [1, {"vars": "local", "args": "none"}],
-    "quote-props": [1, "consistent-as-needed"],
-    "space-infix-ops": 2
+    "no-unused-vars": [1, { "vars": "local", "args": "none" }],
+    "quote-props": [1, "consistent-as-needed"]
   }
 }

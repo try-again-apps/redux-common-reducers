@@ -35,7 +35,8 @@
     "babel-register": "^6.24.1",
     "coveralls": "^2.13.1",
     "cross-env": "^5.0.1",
-    "eslint": "^4.2.0",
+    "eslint": "^4.18.2",
+    "eslint-config-prettier": "^2.9.0",
     "eslint-loader": "^1.9.0",
     "husky": "^0.14.3",
     "jest": "^20.0.4",
@@ -48,7 +49,8 @@
     "lodash": "^4.17.4"
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "useTabs": true
   },
   "lint-staged": {
     "*.js`": ["prettier --write", "git add"]
