@@ -10,22 +10,16 @@
     "dev": "webpack --progress --colors --watch",
     "test": "jest",
     "test:watch": "jest --watch",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "prettify": "prettier \"{src,__tests__}/**/*.js\" --write"
   },
   "jest": {
     "testEnvironment": "node",
     "bail": true,
     "verbose": true,
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ]
+    "collectCoverageFrom": ["src/**/*.{js,jsx}"]
   },
-  "keywords": [
-    "redux",
-    "common",
-    "reducer",
-    "reducers"
-  ],
+  "keywords": ["redux", "common", "reducer", "reducers"],
   "repository": "https://github.com/try-again-apps/redux-common-reducers.git",
   "author": "Try Again Apps <try.again.apps@gmail.com>",
   "license": "MIT",
@@ -57,13 +51,9 @@
     "lodash": "^4.17.4"
   },
   "prettier": {
-    "singleQuote": true,
-    "useTabs": true
+    "singleQuote": true
   },
   "lint-staged": {
-    "*.js`": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js`": ["prettier --write", "git add"]
   }
 }
