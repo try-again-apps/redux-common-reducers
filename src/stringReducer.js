@@ -1,8 +1,11 @@
 import _get from 'lodash/get';
 import _has from 'lodash/has';
 
-export default function stringReducer(changeActions, resetActions, path, initialValue = '') {
-  if (typeof(initialValue) !== 'string') {
+export default function stringReducer(
+  { changeActions, resetActions, path },
+  initialValue = ''
+) {
+  if (typeof initialValue !== 'string') {
     throw new TypeError('Initial state needs to be string');
   }
 
