@@ -9,7 +9,9 @@
     "dev": "webpack --progress --colors --watch",
     "test": "jest",
     "test:watch": "jest --watch",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "testEnvironment": "node",
@@ -48,6 +50,8 @@
     "webpack": "^3.3.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
-  }
+    "lodash": "^4.17.4",
+    "snyk": "^1.192.0"
+  },
+  "snyk": true
 }
